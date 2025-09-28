@@ -78,13 +78,14 @@ Observe responses from all agents (simulated, offline, or real).
 
 Easily switch between agents or add new ones in src/agent_clients.py.
 ```
+```bash
 📝 Agent Capabilities Overview
 Agent Client	Offline?	Description
 OpenAIAgent	✅ Yes	Simulated responses, no API calls
 GeminiAgent	✅ Yes	Simulated responses, no API calls
 HuggingFaceAgent	✅ Yes	Runs local transformer models (GPT-2, etc.)
 OllamaAgent	⚡ Local	Real model inference via Ollama CLI
-
+```
 🚀 Contributing
 Fork the repo and create a feature branch.
 
