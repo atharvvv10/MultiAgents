@@ -1,71 +1,63 @@
-# Agent Monitoring
+# 🧠 MultiAgents: Agent Monitoring Module
+# Real-time observability for multi-agent systems
 
-Welcome to the **Agent Monitoring** module of the MultiAgents framework. This component provides tools and utilities to monitor the performance, behavior, and interactions of AI agents within the system.
+$ git clone https://github.com/atharvvv10/MultiAgents.git
+$ cd MultiAgents/agent_monitoring
 
-## Overview
+# 🚀 Launch the Monitoring Dashboard
+$ python demo/launch_monitor.py
 
-The Agent Monitoring module is designed to:
+# 🌐 Open in browser
+$ xdg-open http://localhost:6006
+# or manually visit: http://localhost:6006
 
-- **Track Agent Activities:** Monitor the actions and decisions made by each agent in real-time.
-- **Analyze Agent Performance:** Evaluate the efficiency and effectiveness of agents in achieving their tasks.
-- **Visualize Agent Interactions:** Provide insights into how agents collaborate and communicate within the system.
+# 📦 Key Features
+# ──────────────────────────────────────────────
+# 📡 Live agent activity stream
+# 🕸️ Interactive communication graph
+# 📈 Performance metrics (CPU, latency, throughput)
+# 🔍 Searchable message logs
+# 🧑‍💻 Agent health and diagnostics
 
-## Features
+# 🖥️ Dashboard Routes
+# ──────────────────────────────────────────────
+# /           → Main dashboard
+# /graph      → Agent communication graph
+# /agents     → Agent stats and health
+# /logs       → Message history and filters
+# /metrics    → System performance charts
 
-- **Real-Time Monitoring:** Observe agent activities as they happen, with minimal latency.
-- **Performance Metrics:** Gather data on response times, success rates, and resource utilization.
-- **Interaction Visualization:** Use graphs and charts to understand agent collaboration patterns.
-- **Alerting System:** Set thresholds for agent performance and receive notifications when anomalies occur.
+# ⚙️ Configuration (Python)
+$ python
+>>> from agent_monitoring.core import MonitorManager
+>>> monitor = MonitorManager()
+>>> monitor.launch_dashboard(port=6006)
 
-## Installation
+# Custom config
+>>> from agent_monitoring.config import MonitorConfig
+>>> config = MonitorConfig(
+...     port=7000,
+...     enable_logging=True,
+...     verbosity="DEBUG"
+... )
+>>> monitor = MonitorManager(config)
 
-To integrate the Agent Monitoring module into your MultiAgents setup:
+# 🔗 Integrations
+# ──────────────────────────────────────────────
+# ✅ LangChain-compatible
+# ✅ Extendable logging backends
+# ✅ Plug-and-play with custom agents
 
-1. Clone the repository:
+# 📚 Docs & References
+# ──────────────────────────────────────────────
+# 📄 monitoring_guide.md → Setup & usage
+# 📄 api_reference.md    → API details
+# 📄 agent_patterns.md   → Design best practices
 
-```bash
-git clone https://github.com/atharvvv10/MultiAgents.git
-cd MultiAgents/agent_monitoring
-```
+# 🧪 Run tests
+$ pytest tests/
 
-2. Install dependencies:
+# 🛠️ Contribute
+# Fork → Feature → PR → 🚀
 
-```bash
-pip install -r requirements.txt
-```
-
-3. Configure the monitoring settings by editing the \`config.yaml\` file to suit your environment.
-
-## Usage
-
-To start monitoring agents:
-
-```bash
-python monitor_agents.py
-```
-
-This will initiate the monitoring process, and you can view the real-time data through the provided dashboard.
-
-## Configuration
-
-The monitoring system is configurable via the \`config.yaml\` file. Key settings include:
-
-- **agent_ids:** List of agent identifiers to monitor.
-- **alert_thresholds:** Performance metrics thresholds for triggering alerts.
-- **dashboard_port:** Port number for the monitoring dashboard.
-
-## Contributing
-
-We welcome contributions to enhance the Agent Monitoring module. To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Implement your changes and commit them.
-4. Push your changes to your fork.
-5. Submit a pull request detailing your changes.
-
-Please ensure that your code adheres to the existing coding standards and includes appropriate tests.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+# Made with ❤️ by Atharv
