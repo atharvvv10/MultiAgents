@@ -67,7 +67,7 @@ Visit 👉 http://localhost:5000/static/graph.html
 
 ## Network Graph Features
 
-## Interactive Visualization
+-> Interactive Visualization
 
 -> Drag, zoom, and pan
 
