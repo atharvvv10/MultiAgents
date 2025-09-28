@@ -1,0 +1,9 @@
+gents:
+  - name: AgentA
+    threshold: 0.5
+  - name: AgentB
+    threshold: 0.7
+
+logging:
+  enabled: true
+  level: info
