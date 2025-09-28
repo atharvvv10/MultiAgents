@@ -1,0 +1,13 @@
+default_provider: openai
+
+providers:
+  openai:
+    api_key: "YOUR_OPENAI_KEY"
+    model: "gpt-4"
+  gemini:
+    api_key: "YOUR_GEMINI_KEY"
+    model: "gemini-pro"
+  huggingface:
+    model: "bert-base-uncased"
+  ollama:
+    model: "llama2"
