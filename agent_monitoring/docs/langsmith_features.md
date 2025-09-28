@@ -48,21 +48,21 @@ Implementation: Store message content with configurable privacy controls.
 
 High Priority:
 
-Request/Response Timeline
+->Request/Response Timeline
 
-Basic Trace Visualization
+->Basic Trace Visualization
 
 Medium Priority:
 
-Error Tracking & Debugging
+->Error Tracking & Debugging
 
-Performance Metrics
+->Performance Metrics
 
 Low Priority:
 
-Advanced filtering
+->Advanced filtering
 
-Cost tracking
+->Cost tracking
 
 ## 3. Technical Architecture
 
