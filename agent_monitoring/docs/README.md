@@ -94,11 +94,11 @@ pytest tests/
 ```
 ## 🛠️ Contributing
 
-1.Fork the repository →
+1.Fork the repository 
 
-2.Add feature or improvement →
+2.Add feature or improvement 
 
-3.Create a Pull Request →
+3.Create a Pull Request 
 
 ## 🚀 Celebrate your contribution!
 
