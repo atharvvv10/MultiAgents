@@ -40,8 +40,11 @@ xdg-open http://localhost:6006
 ## 🖥️ Dashboard Routes
 
 1./graph ->	Interactive agent communication graph
+
 2./agents -> Agent statistics and health overview
+
 3./logs	-> Message history with search & filters
+
 4./metrics -> System performance charts
 
 ## ⚙️ Configuration (Python)
