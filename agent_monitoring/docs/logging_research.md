@@ -4,7 +4,7 @@
 This document explores logging and monitoring solutions for the MultiProdigy framework, comparing existing tools and proposing a practical implementation plan for observability in both prototyping and scalable environments.
 
 ## 1. Comparison of Logging Solutions
-1.1 ELK Stack (Elasticsearch, Logstash, Kibana)
+1.1. ELK Stack (Elasticsearch, Logstash, Kibana)
 
 Pros:
 
@@ -22,7 +22,7 @@ Cons:
 
 -> Costly for small teams or lightweight deployments
 
-1.2 Prometheus + Grafana
+1.2. Prometheus + Grafana
 
 Pros:
 
@@ -38,7 +38,7 @@ Cons:
 
 -> Requires separate log aggregation tools for full observability
 
-1.3 Simple JSON Logging + File Storage
+1.3. Simple JSON Logging + File Storage
 
 Pros:
 
