@@ -56,6 +56,7 @@ python demo/run_demo.py
 pytest tests/
 ```
 🧠 Contributing
+
 1.Fork the repository.
 
 2.Create a new branch.
@@ -64,7 +65,6 @@ pytest tests/
 
 4.Submit a pull request.
 
-5.Refer to CONTRIBUTING.md for guidelines.
 
 ## 📄 License
 MIT License - see LICENSE for details.
