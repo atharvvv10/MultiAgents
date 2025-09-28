@@ -65,21 +65,21 @@ config = MonitorConfig(
 monitor = MonitorManager(config)
 monitor.launch_dashboard()
 ```
-🔗 Integrations
+## 🔗 Integrations
 
--✅ LangChain-compatible
+1.✅ LangChain-compatible
 
--✅ Extendable logging backends
+2.✅ Extendable logging backends
 
--✅ Plug-and-play with custom agents
+3.✅ Plug-and-play with custom agents
 
--📚 Documentation & References
+4.📚 Documentation & References
 
--📄 monitoring_guide.md → Setup & usage
+5.📄 monitoring_guide.md → Setup & usage
 
--📄 api_reference.md → API details
+6.📄 api_reference.md → API details
 
--📄 agent_patterns.md → Design best practices
+7.📄 agent_patterns.md → Design best practices
 
 ## 🧪 Run Tests
 ```bash
@@ -89,4 +89,4 @@ pytest tests/
 
 Fork → Feature → Pull Request → 🚀
 
-Made with ❤️ by Atharv
+## Made with ❤️ by Atharv
