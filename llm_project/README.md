@@ -1,71 +1,96 @@
-# MultiAgents LLM Project
+# 🧠 MultiAgents LLM Project — Local AI Agent Framework
 
-Welcome to the MultiAgents LLM Project This repository showcases the integration of Large Language Models (LLMs) into the MultiAgents framework, enabling the development of intelligent agents capable of performing complex tasks through natural language understanding and generation.
+The **MultiAgents LLM Project** is a modular Python framework designed to run, test, and simulate multiple LLM-powered agents in one place. It supports offline operation for HuggingFace models, simulated LLM clients for OpenAI and Gemini, and real local models through Ollama. Perfect for experimentation, research, and development without needing API keys or constant internet access.
 
-## 🚀 Project Overview
+---
 
-The llm_project module extends the capabilities of the MultiAgents framework by incorporating LLMs, allowing agents to:
-
-- Understand and process natural language inputs
-- Generate human-like responses
-- Perform tasks that require reasoning and contextual understanding
-- Collaborate with other agents to accomplish complex objectives
-
-## 📁 Project Structure
-
+## 📂 Folder Structure
 ```bash
-MultiAgents/
-└── llm_project/
-    ├── src/            # Core source code for LLM-powered agent functionalities
-    ├── demo/           # Sample demonstrations and usage examples
-    └── tests/          # Unit and integration tests
+MultiAgents/llm_project/
+├── demo/ # Example scripts to showcase agent capabilities
+│ └── run_demo.py
+├── src/ # Core agent implementations
+│ └── agent_clients.py
+├── tests/ # Unit & integration tests
+│ └── test_agents.py
+├── requirements.txt # Dependencies (torch, transformers, etc.)
+└── README.md # Documentation
 ```
 
-- **\`src/\`**: Main implementation of LLM-powered agents.
-- **\`demo/\`**: Example scripts to demonstrate agent usage.
-- **\`tests/\`**: Test cases for reliability and correctness.
 
-## 🛠️ Installation
+---
 
-1. Clone the repository:
+## 💡 Features
+
+- **Simulated Agents**: OpenAI and Gemini agents can generate mock responses without API calls.  
+- **Offline HuggingFace Models**: Run models like GPT-2 locally using `transformers`.  
+- **Real Local Models**: Integrate and run Ollama agents for actual LLM inference locally.  
+- **Unified Interface**: Interact with all agents through a consistent async framework.  
+- **Extensible**: Easily add new agents or models as needed.
+
+---
+
+## 🧪 Demo Overview (`demo/run_demo.py`)
+
+The demo runs all agents sequentially:
 
 ```bash
+async def demo_openai():           # Simulated OpenAI responses
+async def demo_gemini():           # Simulated Gemini responses
+async def demo_huggingface():      # Offline HuggingFace model
+async def demo_ollama():           # Real local Ollama model
+Example output:
+
+pgsql
+Copy code
+🔷 OpenAI Response: Simulated response from OpenAI for: Hello
+🟣 Gemini Response: Simulated response from Gemini for: Hello
+🟡 HuggingFace Response: Generated text from local GPT-2
+🟢 Ollama Response: Real AI output from tinyllama
+✅ Demo completed successfully
+```
+## ⚙️ Setup & Installation
+Clone the repository
+
+```bash
+Copy code
 git clone https://github.com/atharvvv10/MultiAgents.git
 cd MultiAgents/llm_project
+Install dependencies
 ```
-
-2. Install dependencies:
-
 ```bash
+Copy code
 pip install -r requirements.txt
+Setup Ollama (optional, for real local agents)
 ```
+Install Ollama: Download
 
-3. Obtain an API key for the LLM service (e.g., OpenAI) and configure it in your environment.
-
-## 🚀 Usage
-
-Run the demo script:
+Pull a model:
 
 ```bash
-python demo/run_demo.py
+Copy code
+ollama pull tinyllama
+▶️ Running the Demo
+bash
+Copy code
+PYTHONPATH=. python demo/run_demo.py
+Observe responses from all agents (simulated, offline, or real).
+
+Easily switch between agents or add new ones in src/agent_clients.py.
 ```
+📝 Agent Capabilities Overview
+Agent Client	Offline?	Description
+OpenAIAgent	✅ Yes	Simulated responses, no API calls
+GeminiAgent	✅ Yes	Simulated responses, no API calls
+HuggingFaceAgent	✅ Yes	Runs local transformer models (GPT-2, etc.)
+OllamaAgent	⚡ Local	Real model inference via Ollama CLI
 
-## 🧪 Running Tests
+🚀 Contributing
+Fork the repo and create a feature branch.
 
-```bash
-pytest tests/
-```
-## 🧠 Contributing
+Add or improve agent clients, demos, or tests.
 
-1.Fork the repository.
+Submit a PR with clear description and tests.
 
-2.Create a new branch.
-
-3.Implement changes and pass tests.
-
-4.Submit a pull request.
-
-
-## 📄 License
-MIT License - see LICENSE for details.
-EOL
+📄 License
+MIT License — see LICENSE for details.
