@@ -55,7 +55,7 @@ python demo/run_demo.py
 ```bash
 pytest tests/
 ```
-🧠 Contributing
+## 🧠 Contributing
 
 1.Fork the repository.
 
