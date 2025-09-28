@@ -1,63 +1,92 @@
 # 🧠 MultiAgents: Agent Monitoring Module
-# Real-time observability for multi-agent systems
 
-$ git clone https://github.com/atharvvv10/MultiAgents.git
-$ cd MultiAgents/agent_monitoring
+Real-time observability for multi-agent systems
 
-# 🚀 Launch the Monitoring Dashboard
-$ python demo/launch_monitor.py
+## 📥 Installation
+# Clone the repository
+```bash
+git clone https://github.com/atharvvv10/MultiAgents.git
+cd MultiAgents/agent_monitoring
+```
 
-# 🌐 Open in browser
-$ xdg-open http://localhost:6006
-# or manually visit: http://localhost:6006
+## 🚀 Launch the Monitoring Dashboard
+```bash
+python demo/launch_monitor.py
+```
 
-# 📦 Key Features
-# ──────────────────────────────────────────────
-# 📡 Live agent activity stream
-# 🕸️ Interactive communication graph
-# 📈 Performance metrics (CPU, latency, throughput)
-# 🔍 Searchable message logs
-# 🧑‍💻 Agent health and diagnostics
+## Open in your browser:
+```bash
+http://localhost:6006
 
-# 🖥️ Dashboard Routes
-# ──────────────────────────────────────────────
-# /           → Main dashboard
-# /graph      → Agent communication graph
-# /agents     → Agent stats and health
-# /logs       → Message history and filters
-# /metrics    → System performance charts
+or use:
 
-# ⚙️ Configuration (Python)
-$ python
->>> from agent_monitoring.core import MonitorManager
->>> monitor = MonitorManager()
->>> monitor.launch_dashboard(port=6006)
+xdg-open http://localhost:6006
+```
 
-# Custom config
->>> from agent_monitoring.config import MonitorConfig
->>> config = MonitorConfig(
-...     port=7000,
-...     enable_logging=True,
-...     verbosity="DEBUG"
-... )
->>> monitor = MonitorManager(config)
+## 📦 Key Features
 
-# 🔗 Integrations
-# ──────────────────────────────────────────────
-# ✅ LangChain-compatible
-# ✅ Extendable logging backends
-# ✅ Plug-and-play with custom agents
+1.📡 Live agent activity stream
 
-# 📚 Docs & References
-# ──────────────────────────────────────────────
-# 📄 monitoring_guide.md → Setup & usage
-# 📄 api_reference.md    → API details
-# 📄 agent_patterns.md   → Design best practices
+2.🕸️ Interactive communication graph
 
-# 🧪 Run tests
-$ pytest tests/
+3.📈 Performance metrics (CPU, latency, throughput)
 
-# 🛠️ Contribute
-# Fork → Feature → PR → 🚀
+4.🔍 Searchable message logs
 
-# Made with ❤️ by Atharv
+5.🧑‍💻 Agent health and diagnostics
+
+## 🖥️ Dashboard Routes
+
+
+/graph ->	Agent communication graph
+/agents	-> Agent stats and health
+/logs ->	Message history and filters
+/metrics ->	System performance charts
+
+## ⚙️ Configuration (Python)
+```bash
+from agent_monitoring.core import MonitorManager
+```
+## Launch dashboard on default port
+```bash
+monitor = MonitorManager()
+monitor.launch_dashboard(port=6006)
+
+Custom Configuration
+from agent_monitoring.config import MonitorConfig
+from agent_monitoring.core import MonitorManager
+
+config = MonitorConfig(
+    port=7000,
+    enable_logging=True,
+    verbosity="DEBUG"
+)
+
+monitor = MonitorManager(config)
+monitor.launch_dashboard()
+```
+🔗 Integrations
+
+-✅ LangChain-compatible
+
+-✅ Extendable logging backends
+
+-✅ Plug-and-play with custom agents
+
+-📚 Documentation & References
+
+-📄 monitoring_guide.md → Setup & usage
+
+-📄 api_reference.md → API details
+
+-📄 agent_patterns.md → Design best practices
+
+## 🧪 Run Tests
+```bash
+pytest tests/
+```
+## 🛠️ Contributing
+
+Fork → Feature → Pull Request → 🚀
+
+Made with ❤️ by Atharv
