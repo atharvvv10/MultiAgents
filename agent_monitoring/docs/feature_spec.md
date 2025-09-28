@@ -43,12 +43,12 @@ Features:
 
 ->Status indicators and performance overlays
 
-2. Architecture & Data Flow
+## 2. Architecture & Data Flow
 Architecture Diagram (Logical)
 ```bash
 Agent Events → AgentTracer → JSON Logs → Dashboard APIs → Web UI → Graph Builder → Graph UI
 ```
-3. Data Flow Steps
+## 3. Data Flow Steps
 
 ->Event Capture: Agents emit structured events via AgentTracer.
 
@@ -58,12 +58,14 @@ Agent Events → AgentTracer → JSON Logs → Dashboard APIs → Web UI → Gra
 
 ->Visualization: Web interfaces display real-time agent status.
 
-4. Implementation Timeline
+## 4. Implementation Timeline
 Phase 1: Foundation	106-112	Implement AgentTracer, instrument BaseAgent with logging, create basic dashboard backend, research visualization approaches
+
 Phase 2: Visualization	113-118	Build LangSmith-style dashboard, implement D3.js graph, add real-time updates, create interactive features
+
 Phase 3: Integration & Testing	119-120	End-to-end integration testing, performance optimization, user documentation, demo preparation
 
-5. Technical Specifications
+## 5. Technical Specifications
 ```bash
 5.1 Log Format
 {
@@ -90,7 +92,7 @@ GET /api/metrics ->	Performance metrics
   "edges": [{"source", "target", "metadata"}]
 }
 ```
-6. Success Criteria
+## 6. Success Criteria
 6.1 Functional Requirements
 
 -> All agent interactions are logged with trace correlation
@@ -117,7 +119,7 @@ GET /api/metrics ->	Performance metrics
 
 -> Useful error messages and debugging information
 
-7. Future Enhancements
+## 7. Future Enhancements
 
 -> Integration with external monitoring systems (Prometheus, Grafana)
 
