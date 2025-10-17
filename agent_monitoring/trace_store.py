@@ -14,5 +14,4 @@ def get_recent_logs(limit=100):
     return logs[-limit:]
 
 def get_trace(trace_id):
-    # placeholder: return all logs for simplicity
     return logs
