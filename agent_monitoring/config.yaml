@@ -1,9 +1,4 @@
-gents:
-  - name: AgentA
-    threshold: 0.5
-  - name: AgentB
-    threshold: 0.7
-
-logging:
+monitoring:
   enabled: true
-  level: info
+  log_level: info
+  max_logs: 100
