@@ -1,17 +1,4 @@
-from .database import SessionLocal
-from .models import AgentLog
-from .schemas import AgentLogCreate
+from trace_store import log_event
 
-def log_event(log: AgentLogCreate):
-    db = SessionLocal()
-    db_log = AgentLog(
-        session_id=log.session_id,
-        step=log.step,
-        event_type=log.event_type,
-        content=log.content,
-    )
-    db.add(db_log)
-    db.commit()
-    db.refresh(db_log)
-    db.close()
-    return db_log
+def log_agent_activity(agent_name, event_type, message, target_agent=None):
+    log_event(agent_name, event_type, message, target_agent)
