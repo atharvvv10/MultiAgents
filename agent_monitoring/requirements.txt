@@ -1,7 +1,6 @@
 fastapi
 uvicorn
-sqlalchemy
+react
+react-dom
+reactflow
 pydantic
-databases
-websockets
-jinja2
