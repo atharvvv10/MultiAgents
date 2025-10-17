@@ -1,13 +1,5 @@
-from langgraph.graph import StateGraph
+from backend.logger import log_agent_activity
 
-def agent_a(state): return {"output": f"A processed {state['input']}"}
-def agent_b(state): return {"output": f"B processed {state['input']}"}
+# Inside workflow step
+log_agent_activity(agent_name="AgentA", step="Step1", event_type="start", content="Workflow started")
 
-def condition(state): return "yes" if "go" in state["input"] else "no"
-
-graph = StateGraph()
-graph.add_node("AgentA", agent_a)
-graph.add_node("AgentB", agent_b)
-graph.add_conditional_edges("AgentA", condition, {"yes": "AgentB", "no": "AgentA"})
-
-app = graph.compile()
