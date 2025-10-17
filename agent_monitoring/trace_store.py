@@ -1,10 +1,18 @@
-import json
-from uuid import uuid4
+logs = []
 
-def save_trace(trace):
-    with open(f"traces/{uuid4()}.json", "w") as f:
-        json.dump(trace, f)
+def log_event(agent_name, step, event_type, content, target_agent=None):
+    logs.append({
+        "agent": agent_name,
+        "step": step,
+        "event_type": event_type,
+        "content": content,
+        "target_agent": target_agent
+    })
+    return logs[-1]
 
-def load_traces():
-    import glob
-    return [json.load(open(f)) for f in glob.glob("traces/*.json")]
+def get_recent_logs(limit=100):
+    return logs[-limit:]
+
+def get_trace(trace_id):
+    # placeholder: return all logs for simplicity
+    return logs
