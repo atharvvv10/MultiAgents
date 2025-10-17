@@ -1,16 +1,4 @@
-from fastapi import APIRouter
-from trace_store import load_traces
+from trace_store import get_recent_logs
 
-router = APIRouter()
-
-@router.get("/logs")
-def get_logs(): return load_traces()
-
-@router.get("/agents")
-def get_agents(): return ["AgentA", "AgentB"]
-
-@router.get("/graph")
-def get_graph(): return {"nodes": ["AgentA", "AgentB"], "edges": [("AgentA", "AgentB")]}
-
-@router.post("/replay")
-def replay(trace): return replay_trace(trace)
+def get_logs_for_visualization(limit=100):
+    return get_recent_logs(limit)
