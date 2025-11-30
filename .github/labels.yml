@@ -1,0 +1,40 @@
+labels:
+  - name: bug
+    color: d73a4a
+    description: Something isn't working
+
+  - name: enhancement
+    color: a2eeef
+    description: New feature request or improvement
+
+  - name: help wanted
+    color: 008672
+    description: Contributor help requested
+
+  - name: good first issue
+    color: 7057ff
+    description: Good for beginners or first-time contributors
+
+  - name: needs-moderation
+    color: fbca04
+    description: Requires moderator review before merge or action
+
+  - name: awaiting-moderator
+    color: 5319e7
+    description: Waiting for moderator approval
+
+  - name: moderator-approved
+    color: 0e8a16
+    description: Approved by a moderator, safe to merge
+
+  - name: beginner
+    color: 0e8a16
+    description: Beginner-level issue
+
+  - name: intermediate
+    color: 1d76db
+    description: Intermediate-level issue
+
+  - name: advanced
+    color: 5319e7
+    description: Advanced-level or complex issue
