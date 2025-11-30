@@ -1,229 +1,157 @@
-################################################################################
-#                               MultiAgents                                    #
-#        Multi-Agent System with Monitoring, Replay & Observability           #
-################################################################################
+# 🧠 MultiAgents
 
+Multi-Agent System • Monitoring • Replay • Observability
+
+A modular full-stack framework for building, monitoring, and visualizing multi-agent workflows.  
+Includes backend orchestration, real-time monitoring, replay timeline, workflow graphs, and a frontend dashboard.
+
+---
+
+## 📁 Project Structure
+```bash
 MultiAgents/
+│
 ├── backend/
-│   ├── broadcaster.py
-│   ├── database.py
-│   ├── graph_builder.py
-│   ├── logger.py
-│   ├── main.py
-│   ├── metrics.py
-│   ├── models.py
-│   ├── observability.py
-│   ├── replay.py
-│   └── schemas.py
+│ ├── broadcaster.py # Real-time event broadcasting to frontend subscribers
+│ ├── database.py # Storage of traces, metrics, snapshots, and replay data
+│ ├── graph_builder.py # Builds LangGraph-style agent workflow graphs (nodes, edges, routing)
+│ ├── logger.py # Central structured logging system for events, traces, and agent states
+│ ├── main.py # Backend entrypoint — starts API server, monitoring, replay engine
+│ ├── metrics.py # Captures latency, token usage, error rates, and agent performance stats
+│ ├── models.py # Typed data models: events, states, traces, graph nodes, snapshots
+│ ├── observability.py # Tracks system health, agent behavior anomalies, state transitions
+│ ├── replay.py # Reconstructs full history of agent runs for interactive timeline replay
+│ └── schemas.py # API + internal data schemas for requests, events, and trace records
 │
 ├── docs/
-│   ├── README.md
-│   ├── feature_spec.md
-│   ├── graph_visualization.md
-│   ├── langsmith_features.md
-│   ├── logging_research.md
-│   └── user_guide.md
+│ ├── README.md # Documentation root
+│ ├── feature_spec.md # Feature-level architecture specifications
+│ ├── graph_visualization.md# Workflow visualization details
+│ ├── langsmith_features.md # LangGraph/LangSmith integration overview
+│ ├── logging_research.md # Internal logging and tracing research notes
+│ └── user_guide.md # Step-by-step operational guide
 │
 ├── frontend/
-│   ├── components/
-│   ├── pages/
-│   ├── app.js
-│   ├── index.html
-│   └── style.css
+│ ├── components/ # UI elements like replay controls, graph views, agent state cards
+│ ├── pages/ # Dashboard pages: Observability, Replay, Monitor
+│ ├── app.js # Frontend app logic, routing, global state management
+│ ├── index.html # Root HTML page for the dashboard
+│ └── style.css # Styling for layout, colors, and theme
 │
-├── config.yaml
-├── langgraph_workflow.py
-├── reply_engine.py
-├── requirements.txt
-└── trace_store.py
+├── config.yaml # Environment configurations: logging, workflow definitions, ports
+├── langgraph_workflow.py # Defines agent interactions and workflow graph
+├── reply_engine.py # LLM response pipeline: generation, validation, routing
+├── requirements.txt # Python dependencies for the whole project
+└── trace_store.py # Trace persistence layer for logging and replay
+```
+---
 
+## 📝 Description
 
-================================================================================
-# OVERVIEW
-================================================================================
-MultiAgents is a fully modular framework for building multi-agent systems with:
+MultiAgents provides everything required to run and observe complex multi-agent execution:  
+- Agent workflow orchestration  
+- Real-time monitoring & visualization  
+- Replay of past agent runs  
+- Graph-based workflow representation  
+- Metrics and performance insights  
+- Frontend dashboard for observability  
+- Strong backend architecture for agent logic  
 
-  - Real-time monitoring
-  - Replay and timeline visualization
-  - Workflow/graph execution
-  - Agent interaction tracing
-  - Metrics and observability
-  - Frontend dashboard for live inspection
+Designed for debugging, research, and production-oriented agent ecosystems.
 
-It includes both:
-  ✔ backend engine  
-  ✔ frontend observability UI  
-  ✔ documentation suite  
+---
 
+## 🖥️ Backend Modules
 
-================================================================================
-# BACKEND (Core Engine)
-================================================================================
+- **broadcaster.py**: Real-time event broadcasting to frontend subscribers  
+- **database.py**: Storage of traces, metrics, snapshots, and replay data  
+- **graph_builder.py**: Builds LangGraph-style agent workflow graphs (nodes, edges, and routing)  
+- **logger.py**: Central structured logging system for events, traces, and agent states  
+- **main.py**: Backend entrypoint — starts API server, monitoring, and replay engine  
+- **metrics.py**: Captures latency, token usage, error rates, and agent performance statistics  
+- **models.py**: Typed data models including events, states, traces, graph nodes, and snapshots  
+- **observability.py**: Tracks system health, agent behavior anomalies, and state transitions  
+- **replay.py**: Reconstructs full history of agent runs into an interactive timeline for replay  
+- **schemas.py**: Defines API and internal data schemas for requests, events, and trace records  
 
-backend/broadcaster.py
-    • Real-time event and message broadcasting.
-    • Sends agent logs, states, and updates to the frontend.
+---
 
-backend/database.py
-    • Stores traces, metrics, snapshots, agent runs.
-    • Acts as lightweight DB for replay + logs.
+## 📚 Documentation
 
-backend/graph_builder.py
-    • Builds workflow graphs (LangGraph style).
-    • Defines nodes, edges, routing, dependencies.
+Key documents to explore:  
+- **README.md** — Root project documentation  
+- **feature_spec.md** — Detailed architecture and feature specifications  
+- **graph_visualization.md** — Details of workflow graph visualization  
+- **langsmith_features.md** — LangGraph and LangSmith platform integrations  
+- **logging_research.md** — Insights and research on logging and tracing methodologies  
+- **user_guide.md** — Step-by-step operational manual for users  
 
-backend/logger.py
-    • Central logging pipeline.
-    • Structured logs, event logs, trace logs.
+---
 
-backend/main.py
-    • Backend entry point.
-    • Starts the server, broadcaster, replay engine.
+## 🎨 Frontend (Observability Dashboard)
 
-backend/metrics.py
-    • Agent performance metrics.
-    • Latency, message count, error rates, runtime stats.
+- **components/** — UI elements like replay controls, graph view, agent state cards  
+- **pages/** — Dashboard pages including Observability, Replay, and Monitor interfaces  
+- **app.js** — Frontend application logic managing routing and state  
+- **index.html** — Root HTML page of the dashboard  
+- **style.css** — Dashboard styles for layout, colors, and theming  
 
-backend/models.py
-    • Data model definitions (Pydantic/dataclasses).
-    • AgentState, EventPayload, TraceRecord, etc.
+---
 
-backend/observability.py
-    • System health monitor.
-    • Tracks agent failures, anomalies, state updates.
+## ⚙️ Configuration & Supporting Files
 
-backend/replay.py
-    • Full replay engine.
-    • Reconstructs past agent runs, step-by-step playback.
+- **config.yaml** — Environment setup, logging options, workflow definitions, and backend/frontend ports  
+- **langgraph_workflow.py** — Workflow graph defining agent interactions and routing  
+- **reply_engine.py** — Language Model (LLM) response pipeline including generation, validation, and routing  
+- **trace_store.py** — Provides trace persistence layer used by logging and replay functionalities  
 
-backend/schemas.py
-    • API schemas, event payload formats, validators.
+---
 
+## 📦 Installation
+```bash
+git clone https://github.com/atharvvv10/MultiAgents.git
+cd MultiAgents
+pip install -r requirements.txt
+```
+---
 
-================================================================================
-# DOCS (Full Documentation)
-================================================================================
+## ▶️ Run Backend
+```bash
+python backend/main.py
+```
+---
 
-docs/README.md
-    • Overview documentation.
+## 🌐 Run Frontend
+```bash
+Option 1 — Open directly:  
+Open `frontend/index.html` in a web browser.
 
-docs/feature_spec.md
-    • Complete project feature specifications.
+Option 2 — Serve the frontend folder:  
+npx serve frontend
+```
+---
 
-docs/graph_visualization.md
-    • Graph rendering + workflow visualization docs.
+## ✨ Features
 
-docs/langsmith_features.md
-    • LangGraph/LangSmith integration notes.
+- Real-time multi-agent monitoring  
+- Replay timeline viewer for past agent runs  
+- Workflow graph visualization  
+- Full trace logging and persistent storage  
+- Metrics and performance statistics  
+- Frontend dashboard for comprehensive observability  
+- Modular and scalable backend architecture  
+- Ideal tooling for debugging, research, and production  
 
-docs/logging_research.md
-    • Research on logging design + performance.
+---
 
-docs/user_guide.md
-    • Full user-side documentation for setup & usage.
+## 🎯 Ideal Use Cases
 
+- AI agent research  
+- Multi-agent system debugging  
+- Workflow visualization and tracing  
+- Performance and metrics analysis  
+- Production-grade multi-agent orchestration  
 
-================================================================================
-# FRONTEND (Observability Dashboard)
-================================================================================
+---
 
-frontend/components/
-    • Reusable UI components:
-        - ReplayControls
-        - Timeline
-        - GraphViewer
-        - AgentStateCards
-
-frontend/pages/
-    • Pages for:
-        - /observability
-        - /replay
-        - /monitor
-
-frontend/app.js
-    • Frontend application logic and routing.
-
-frontend/index.html
-    • Root file serving the UI.
-
-frontend/style.css
-    • Styling for the full dashboard.
-
-
-================================================================================
-# ROOT FILES
-================================================================================
-
-config.yaml
-    • Central config: ports, logging, workflow settings, etc.
-
-langgraph_workflow.py
-    • Workflow definition using LangGraph-style graph.
-
-reply_engine.py
-    • Agent response engine (LLM calls, routing logic).
-
-requirements.txt
-    • Python dependencies.
-
-trace_store.py
-    • Trace persistence layer:
-        - save/load runs
-        - index trace files
-        - compact log storage
-
-
-================================================================================
-# INSTALLATION
-================================================================================
-
-$ git clone https://github.com/atharvvv10/MultiAgents
-$ cd MultiAgents
-$ pip install -r requirements.txt
-
-
-================================================================================
-# RUN BACKEND
-================================================================================
-
-$ python backend/main.py
-
-
-================================================================================
-# RUN FRONTEND
-================================================================================
-
-Option 1: Directly open frontend/index.html
-
-Option 2: Serve folder:
-
-$ npx serve frontend
-
-
-================================================================================
-# FEATURES
-================================================================================
-
-  ✔ Real-time agent monitoring
-  ✔ Full replay timeline
-  ✔ Workflow/graph visualization
-  ✔ Metrics: latency, errors, token usage
-  ✔ Agent trace storage
-  ✔ Clean modular architecture
-  ✔ Frontend dashboard for observability
-
-
-================================================================================
-# PERFECT FOR
-================================================================================
-
-  • Multi-agent R&D
-  • Agent debugging
-  • AI workflow visualizations
-  • Building production agent systems
-  • Research on autonomous agents
-
-################################################################################
-#                             END OF README                                     #
-################################################################################
-
+Thank you for exploring MultiAgents — empowering you with full observability and control over complex multi-agent workflows! 🚀
