@@ -1,0 +1,65 @@
+name: Moderation tracker
+on:
+  schedule:
+    - cron: '0 0 * * *'   
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build moderation queue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            const pending = issues.filter(i =>
+              (i.labels || []).some(l => ['needs-moderation', 'awaiting-moderator'].includes(l.name))
+            );
+
+            const count = pending.length;
+            let body = `## Moderation queue (${count})\n\n`;
+            if (count === 0) {
+              body += 'No items pending moderator review.\n';
+            } else {
+              pending.forEach(i => {
+                const labels = (i.labels || []).map(l => l.name).join(', ');
+                body += `- #${i.number} — ${i.title} — labels: ${labels}\n`;
+              });
+            }
+
+            // find existing "Moderation queue" issue
+            const list = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              per_page: 100
+            });
+
+            const existing = list.data.find(x => x.title && x.title.toLowerCase() === 'moderation queue');
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: 'Moderation queue',
+                body
+              });
+            }
