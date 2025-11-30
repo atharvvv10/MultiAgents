@@ -45,7 +45,7 @@ jobs:
             if (needsModeration) labelsToAdd.add('needs-moderation');
 
             if (labelsToAdd.size > 0) {
-              await github.issues.addLabels({
+              await github.rest.issues.addLabels({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issue.number,
@@ -54,31 +54,39 @@ jobs:
             }
 
             if (needsModeration) {
-              // try to read moderators file and mention them
+              // try to read moderators file and mention them (safe parsing without external deps)
               try {
-                const content = await github.repos.getContent({
+                const content = await github.rest.repos.getContent({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   path: '.github/MODERATORS.yml'
                 });
-                const yaml = require('js-yaml');
                 const raw = Buffer.from(content.data.content, 'base64').toString();
-                const parsed = yaml.load(raw);
-                const mods = (parsed.moderators || []).map(m => '@' + m).join(' ');
-                const comment = `:rotating_light: This issue touches core components and needs moderator review. ${mods} — please review and add the \`moderator-approved\` label when ready.`;
-                await github.issues.createComment({
+                const lines = raw.split(/\r?\n/);
+                let mods = [];
+                const start = lines.findIndex(l => l.trim().startsWith('moderators:'));
+                if (start !== -1) {
+                  for (let i = start + 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line.startsWith('-')) break;
+                    const name = line.replace(/^-+\s*/, '').replace(/^@/, '').trim();
+                    if (name) mods.push('@' + name);
+                  }
+                }
+                const mention = (mods.length > 0) ? mods.join(' ') : '';
+                const comment = `:rotating_light: This issue touches core components and needs moderator review. ${mention} — please review and add the \`moderator-approved\` label when ready.`;
+                await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issue.number,
                   body: comment
                 });
               } catch (e) {
-                // fallback comment if moderators file not present or parse error
-                await github.issues.createComment({
+                await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issue.number,
-                  body: `:rotating_light: This issue appears to require moderator review (no .github/MODERATORS.yml found or parse failed). Please ask a maintainer to review and add \`moderator-approved\`.`
+                  body: `:rotating_light: This issue appears to require moderator review (couldn't read .github/MODERATORS.yml). Please ask a maintainer to add \`moderator-approved\`.`
                 });
               }
             }
