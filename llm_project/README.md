@@ -116,7 +116,7 @@ pip install -r requirements.txt
 
 ---
 
-# ⚡ (Optional) Setup Ollama for Local LLMs
+# ⚡ Setup Ollama for Local LLMs
 
 ### Install Ollama (macOS/Linux/Windows)  
 ➡️ https://ollama.ai/download
