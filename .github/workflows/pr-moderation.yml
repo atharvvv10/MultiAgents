@@ -1,0 +1,60 @@
+name: PR moderation (repo-aware)
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  issues: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  moderate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR files & decide moderation
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const prNumber = pr.number;
+
+            // which folders are core for this repo
+            const coreDirs = ['agent_monitoring/', 'ai-agent/', 'llm_project/'];
+
+            // fetch changed files in the PR
+            const files = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: prNumber });
+            const filenames = files.map(f => f.filename || '');
+
+            const touchesCore = filenames.some(fn => coreDirs.some(d => fn.startsWith(d)));
+            const largePR = (pr.changed_files || filenames.length) > 12; // heuristic for large PRs
+            const body = (pr.body || '').toLowerCase();
+            const needsModeration = touchesCore || largePR || /core|api|security|breaking change|breaking/.test(body);
+
+            if (needsModeration) {
+              // add moderation labels
+              await github.issues.addLabels({
+                owner, repo, issue_number: prNumber,
+                labels: ['needs-moderation', 'awaiting-moderator']
+              });
+
+              // try to read moderators and ping them
+              try {
+                const content = await github.repos.getContent({ owner, repo, path: '.github/MODERATORS.yml' });
+                const yaml = require('js-yaml');
+                const raw = Buffer.from(content.data.content, 'base64').toString();
+                const parsed = yaml.load(raw);
+                const mods = (parsed.moderators || []).map(m => '@' + m).join(' ');
+                const bodyMsg = `:rotating_light: This PR modifies core components or is large. ${mods} — please review and add the \`moderator-approved\` label to allow merging.`;
+                await github.issues.createComment({ owner, repo, issue_number: prNumber, body: bodyMsg });
+              } catch (e) {
+                await github.issues.createComment({
+                  owner, repo, issue_number: prNumber,
+                  body: `:rotating_light: This PR appears to require moderator review. Please ask a maintainer or moderator to add the \`moderator-approved\` label.`
+                });
+              }
+            } else {
+              // optional: label small doc-only PRs as help wanted / beginner if desired
+            }
