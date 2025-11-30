@@ -1,4 +1,4 @@
-<div align="center">
+<div>
 
 # 🤖 MultiAgents — Modular AI Agent Framework
 A production-ready, multi-agent system designed for building, extending, and monitoring large-scale AI workflows.
