@@ -1,4 +1,4 @@
-<div align="center">
+<div>
 
 # 🧠 MultiAgents LLM Project  
 ### Local, Modular & Extensible AI Agent Framework
