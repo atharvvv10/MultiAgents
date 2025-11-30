@@ -73,10 +73,3 @@ We welcome contributions to enhance the MultiAgents framework. To contribute:
 2. Create a new branch for your feature or bug fix.
 3. Implement your changes and ensure all tests pass.
 4. Submit a pull request with a clear description of your changes.
-
-Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-EOL
