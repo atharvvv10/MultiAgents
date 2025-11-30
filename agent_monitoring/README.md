@@ -1,153 +1,229 @@
-# 🕵️‍♂️ Agent Monitoring Module
+################################################################################
+#                               MultiAgents                                    #
+#        Multi-Agent System with Monitoring, Replay & Observability           #
+################################################################################
 
-Welcome to the **Agent Monitoring** module of the MultiAgents system — a critical component for tracking, analyzing, and managing agent behavior in a multi-agent environment. This module ensures your agents operate reliably, performance is measurable, and issues are easily identified and addressed.
+MultiAgents/
+├── backend/
+│   ├── broadcaster.py
+│   ├── database.py
+│   ├── graph_builder.py
+│   ├── logger.py
+│   ├── main.py
+│   ├── metrics.py
+│   ├── models.py
+│   ├── observability.py
+│   ├── replay.py
+│   └── schemas.py
+│
+├── docs/
+│   ├── README.md
+│   ├── feature_spec.md
+│   ├── graph_visualization.md
+│   ├── langsmith_features.md
+│   ├── logging_research.md
+│   └── user_guide.md
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── app.js
+│   ├── index.html
+│   └── style.css
+│
+├── config.yaml
+├── langgraph_workflow.py
+├── reply_engine.py
+├── requirements.txt
+└── trace_store.py
 
----
 
-## 📁 Directory Structure
+================================================================================
+# OVERVIEW
+================================================================================
+MultiAgents is a fully modular framework for building multi-agent systems with:
 
-agent_monitoring/
-├── logs/ # Stores runtime logs of agent activities
-├── monitors.py # Core monitoring classes & logic
-├── visualizer.py # Visualization tools for agent metrics and interactions
-├── utils.py # Utilities for data processing & alert generation
-├── requirements.txt # Dependencies for this monitoring module
-└── README.md # Documentation file (this)
+  - Real-time monitoring
+  - Replay and timeline visualization
+  - Workflow/graph execution
+  - Agent interaction tracing
+  - Metrics and observability
+  - Frontend dashboard for live inspection
 
-text
+It includes both:
+  ✔ backend engine  
+  ✔ frontend observability UI  
+  ✔ documentation suite  
 
-### Description of key files/folders:
 
-- **logs/**: This folder captures detailed logs of agent behavior, states, error traces, and performance benchmarks during execution.
-- **monitors.py**: Contains classes like `AgentMonitor` which record agent actions, monitor health, trigger alerts, and provide APIs to start/stop monitoring sessions.
-- **visualizer.py**: Provides functions to graphically represent agent interaction networks, activity timelines, or other performance visualizations.
-- **utils.py**: Helper functions used across the module, such as formatting logs, sending alerts, and managing timestamps.
-- **requirements.txt**: List of exact Python packages needed (e.g., logging, matplotlib) to run this module seamlessly.
+================================================================================
+# BACKEND (Core Engine)
+================================================================================
 
----
+backend/broadcaster.py
+    • Real-time event and message broadcasting.
+    • Sends agent logs, states, and updates to the frontend.
 
-## 🚀 Setup & Installation
-```
-Follow these commands to get started with the agent monitoring system:
+backend/database.py
+    • Stores traces, metrics, snapshots, agent runs.
+    • Acts as lightweight DB for replay + logs.
 
-Clone the MultiAgents repository and checkout the development branch
-git clone https://github.com/atharvvv10/MultiAgents.git
-cd MultiAgents
-git checkout pr-test
+backend/graph_builder.py
+    • Builds workflow graphs (LangGraph style).
+    • Defines nodes, edges, routing, dependencies.
 
-Navigate to agent monitoring directory
-cd agent_monitoring
+backend/logger.py
+    • Central logging pipeline.
+    • Structured logs, event logs, trace logs.
 
-Create a virtual environment (recommended)
-python3 -m venv venv
-source venv/bin/activate # On Windows: venv\Scripts\activate
+backend/main.py
+    • Backend entry point.
+    • Starts the server, broadcaster, replay engine.
 
-Install dependencies
-pip install -r requirements.txt
-```
+backend/metrics.py
+    • Agent performance metrics.
+    • Latency, message count, error rates, runtime stats.
 
-> 💡 It's best practice to keep the virtual environment active while working to ensure dependency isolation.
+backend/models.py
+    • Data model definitions (Pydantic/dataclasses).
+    • AgentState, EventPayload, TraceRecord, etc.
 
----
+backend/observability.py
+    • System health monitor.
+    • Tracks agent failures, anomalies, state updates.
 
-## 🛠️ Usage
+backend/replay.py
+    • Full replay engine.
+    • Reconstructs past agent runs, step-by-step playback.
 
-1. **Import and Initialize Monitoring**
+backend/schemas.py
+    • API schemas, event payload formats, validators.
 
-from monitors import AgentMonitor
 
-Initialize with a list of agent IDs you want to track
-monitor = AgentMonitor(agent_ids=['agent_1', 'agent_2', 'agent_3'])
+================================================================================
+# DOCS (Full Documentation)
+================================================================================
 
-Start monitoring session
-monitor.start()
+docs/README.md
+    • Overview documentation.
 
-text
+docs/feature_spec.md
+    • Complete project feature specifications.
 
-2. **Logging & Visualization**
+docs/graph_visualization.md
+    • Graph rendering + workflow visualization docs.
 
-- Agent activities are continuously logged into the `/logs` directory.
-- Use visualization tools to generate insightful dashboards.
+docs/langsmith_features.md
+    • LangGraph/LangSmith integration notes.
 
-from visualizer import plot_agent_activity
+docs/logging_research.md
+    • Research on logging design + performance.
 
-Example: Plot activity timeline for a specific agent
-plot_agent_activity('agent_1')
+docs/user_guide.md
+    • Full user-side documentation for setup & usage.
 
-text
 
-3. **Stop Monitoring**
+================================================================================
+# FRONTEND (Observability Dashboard)
+================================================================================
 
-monitor.stop()
+frontend/components/
+    • Reusable UI components:
+        - ReplayControls
+        - Timeline
+        - GraphViewer
+        - AgentStateCards
 
-text
+frontend/pages/
+    • Pages for:
+        - /observability
+        - /replay
+        - /monitor
 
----
+frontend/app.js
+    • Frontend application logic and routing.
 
-## 🔧 Features & Capabilities
+frontend/index.html
+    • Root file serving the UI.
 
-- **Real-time behavior tracking** with detailed logs
-- **Health monitoring** that raises alerts on failures or anomalies
-- **Performance metrics collection** for optimization
-- **Visual insights** via customizable graphs and plots
-- **Modular and extensible** design allowing easy expansion
-- **Persistent log storage** for offline audit and review
+frontend/style.css
+    • Styling for the full dashboard.
 
----
 
-## 🧑‍💻 Development Guidelines
-```bash
-Want to contribute? Follow these steps:
+================================================================================
+# ROOT FILES
+================================================================================
 
-Fork and clone your forked repo
-git clone <your-fork-url>
-cd MultiAgents
-git checkout -b feature/your-feature-name
+config.yaml
+    • Central config: ports, logging, workflow settings, etc.
 
-Make your changes (add features/tests/fixes)
-Commit changes
-git commit -am "Description of your changes"
+langgraph_workflow.py
+    • Workflow definition using LangGraph-style graph.
 
-Push branch and create a Pull Request on the main repo
-git push origin feature/your-feature-name
+reply_engine.py
+    • Agent response engine (LLM calls, routing logic).
 
-text
-```
-✨ **Coding best practices:**
+requirements.txt
+    • Python dependencies.
 
-- Follow existing code style and structure in `monitors.py` and other files.
-- Write clear, concise commit messages.
-- Add or update unit tests for new or modified functionality.
-- Document major changes both inline and in this README.
+trace_store.py
+    • Trace persistence layer:
+        - save/load runs
+        - index trace files
+        - compact log storage
 
----
 
-## 🏛️ Architectural Overview
+================================================================================
+# INSTALLATION
+================================================================================
 
-The Agent Monitoring module operates as a background observer within the multi-agent ecosystem:
+$ git clone https://github.com/atharvvv10/MultiAgents
+$ cd MultiAgents
+$ pip install -r requirements.txt
 
-- It hooks into agents’ lifecycle events to capture state transitions and actions.
-- Logs are timestamped and stored persistently to enable event tracing and historical review.
-- Alert logic is embedded to notify when agent health degrades or unexpected patterns appear.
-- Visualization components pull from the stored logs to provide intuitive understanding of system behavior over time.
 
-This design supports scalability, as new agents can be monitored simply by adding their IDs to the monitor's configuration without code changes.
+================================================================================
+# RUN BACKEND
+================================================================================
 
----
+$ python backend/main.py
 
-## 🤝 Support & Contact
 
-For any questions, bugs, feature requests, or help:
+================================================================================
+# RUN FRONTEND
+================================================================================
 
-- Open an issue in the main [MultiAgents GitHub repository](https://github.com/atharvvv10/MultiAgents/issues)
-- Contact the project maintainer through email or discuss on Discord (details in main repo)
+Option 1: Directly open frontend/index.html
 
----
+Option 2: Serve folder:
 
-## 💖 Acknowledgments
+$ npx serve frontend
 
-Thank you for using and contributing to MultiAgents! Your collaboration keeps the system robust and innovative. 🎉
 
----
+================================================================================
+# FEATURES
+================================================================================
 
-Happy monitoring! 🚀👀
+  ✔ Real-time agent monitoring
+  ✔ Full replay timeline
+  ✔ Workflow/graph visualization
+  ✔ Metrics: latency, errors, token usage
+  ✔ Agent trace storage
+  ✔ Clean modular architecture
+  ✔ Frontend dashboard for observability
+
+
+================================================================================
+# PERFECT FOR
+================================================================================
+
+  • Multi-agent R&D
+  • Agent debugging
+  • AI workflow visualizations
+  • Building production agent systems
+  • Research on autonomous agents
+
+################################################################################
+#                             END OF README                                     #
+################################################################################
+
