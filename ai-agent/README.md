@@ -1,4 +1,4 @@
-# MultiAgents AI Agent
+# 🧠 MultiAgents AI Agent
 
 Welcome to the MultiAgents AI Agent project! This repository provides a foundational framework for building and managing AI agents capable of performing specific tasks autonomously. It's designed to be modular, scalable, and easy to integrate with various applications.
 
