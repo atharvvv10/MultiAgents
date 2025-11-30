@@ -1,0 +1,84 @@
+name: Issue triage (repo-aware)
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Triage issue with github-script
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = context.payload.issue || context.payload;
+            const bodyRaw = (issue.body || '').toString();
+            const body = bodyRaw.toLowerCase();
+            const labelsToAdd = new Set();
+
+            // core directories to watch
+            const coreDirs = ['agent_monitoring', 'ai-agent', 'llm_project'];
+            const mentionsCore = coreDirs.some(d => body.includes(d));
+
+            // detect level selections
+            if (body.includes('beginner')) labelsToAdd.add('beginner');
+            if (body.includes('intermediate')) labelsToAdd.add('intermediate');
+            if (body.includes('advanced')) labelsToAdd.add('advanced');
+
+            // first-time contributor
+            if (body.includes('this is my first issue') || body.includes('first issue') || body.includes('first-time')) {
+              labelsToAdd.add('good first issue');
+            }
+
+            // classification heuristics
+            if (body.includes('bug') || body.includes('[bug]')) labelsToAdd.add('bug');
+            if (body.includes('feature') || body.includes('[feature]') || body.includes('feat:')) labelsToAdd.add('enhancement');
+
+            // moderation heuristics
+            const needsModeration = mentionsCore || /core|api|security|breaking change|breaking/.test(body);
+            if (needsModeration) labelsToAdd.add('needs-moderation');
+
+            if (labelsToAdd.size > 0) {
+              await github.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: Array.from(labelsToAdd)
+              });
+            }
+
+            if (needsModeration) {
+              // try to read moderators file and mention them
+              try {
+                const content = await github.repos.getContent({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  path: '.github/MODERATORS.yml'
+                });
+                const yaml = require('js-yaml');
+                const raw = Buffer.from(content.data.content, 'base64').toString();
+                const parsed = yaml.load(raw);
+                const mods = (parsed.moderators || []).map(m => '@' + m).join(' ');
+                const comment = `:rotating_light: This issue touches core components and needs moderator review. ${mods} — please review and add the \`moderator-approved\` label when ready.`;
+                await github.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: comment
+                });
+              } catch (e) {
+                // fallback comment if moderators file not present or parse error
+                await github.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `:rotating_light: This issue appears to require moderator review (no .github/MODERATORS.yml found or parse failed). Please ask a maintainer to review and add \`moderator-approved\`.`
+                });
+              }
+            }
