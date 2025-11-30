@@ -25,5 +25,5 @@ Any other context, examples, or screenshots.
 **First-time contributor**
 - [ ] This is my first issue on this repository
 
-**Proposed implementation (optional)**
+**Proposed implementation**
 Describe the approach you think could work.
