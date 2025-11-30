@@ -182,14 +182,3 @@ We welcome contributions in:
 2. Create a feature branch  
 3. Add your improvements  
 4. Submit a pull request  
-
-If modifying major logic → PR moderation workflow will request **moderator approval**.
-
----
-
-# ⭐ Credits
-
-Built and maintained by **@atharvvv10**  
-Part of the MultiAgents modular AI ecosystem.
-
-
