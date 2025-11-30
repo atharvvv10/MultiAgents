@@ -1,5 +1,4 @@
 <div>
-
 # 🧠 MultiAgents LLM Project  
 ### Local, Modular & Extensible AI Agent Framework
 
@@ -19,19 +18,30 @@ Perfect for **research**, **offline AI development**, **agent prototyping**, and
 # 📂 Folder Structure
 
 ```bash
-MultiAgents/llm_project/
+llm_project/
+├── agents/
+│   ├── __init__.py
+│   └── agent.py               # Core Agent class
 │
-├── demo/
-│   └── run_demo.py              # Shows all agent capabilities
+├── config/
+│   ├── config.yaml            # Global configuration (model, paths, params)
+│   └── config_loader.py       # Reads & parses YAML config
 │
-├── src/
-│   └── agent_clients.py         # Core agent implementations
+├── llm_providers/
+│   ├── __init__.py
+│   ├── base.py                # Base provider interface
+│   ├── openai_provider.py     # Simulated OpenAI client
+│   ├── gemini_provider.py     # Simulated Gemini client
+│   ├── huggingface_provider.py# Local offline HF model
+│   ├── ollama_provider.py     # Real local Ollama inference
 │
-├── tests/
-│   └── test_agents.py           # Unit & integration tests
+├── utils/
+│   ├── __init__.py
+│   └── logger.py              # Global logging utility
 │
-├── requirements.txt             # Dependencies (torch, transformers, etc.)
-└── README.md                    # This documentation
+├── main.py                    # Entry point to run agents
+├── README.md                  # Documentation
+└── requirements.txt           # Dependencies
 ```
 
 ---
