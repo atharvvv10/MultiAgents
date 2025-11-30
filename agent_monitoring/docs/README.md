@@ -84,4 +84,3 @@ If you find gaps or want to improve docs:
 
 ---
 
-Thank you for contributing to the robustness and clarity of the Agent Monitoring system! 🚀
