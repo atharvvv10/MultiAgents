@@ -79,12 +79,12 @@ ollama pull tinyllama
 Easily switch between agents or add new ones in src/agent_clients.py.
 
 
-📝 Agent Capabilities Overview
+## 📝 Agent Capabilities Overview
 
-OpenAIAgent -✅ Offline	Simulated responses, no API calls
-GeminiAgent -✅ Offline	Simulated responses, no API calls
-HuggingFaceAgent -✅ Offline	Runs local transformer models (GPT-2, etc.)
-OllamaAgent	-⚡ Local	Real model inference via Ollama CLI
+OpenAIAgent -✅ Offline	Simulated responses, no API calls <br>
+GeminiAgent -✅ Offline	Simulated responses, no API calls <br>
+HuggingFaceAgent -✅ Offline	Runs local transformer models (GPT-2, etc.) <br>
+OllamaAgent	-⚡ Local	Real model inference via Ollama CLI <br>
 
 ## 🚀 Contributing
 1.Fork the repo and create a feature branch.
