@@ -92,6 +92,3 @@ OllamaAgent	-⚡ Local	Real model inference via Ollama CLI <br>
 2.Add or improve agent clients, demos, or tests.
 
 3.Submit a PR with clear description and tests.
-
-📄 License
-MIT License — see LICENSE for details.
