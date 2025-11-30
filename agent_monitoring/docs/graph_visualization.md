@@ -13,7 +13,7 @@ This document outlines the design and reasoning behind the interactive visualiza
 
 ## 2. Libraries Considered
 
-2.1 D3.js
+### 2.1 D3.js
 
 Pros: Very flexible, low-level, browser-native, and highly customizable.
 
@@ -21,7 +21,7 @@ Cons: Has a steeper learning curve compared to others.
 
 Decision: ✅ Chosen as the primary library for implementation due to its flexibility and real-time interactivity support.
 
-2.2 Cytoscape.js
+### 2.2 Cytoscape.js
 
 Pros: Provides an easier API, well-suited for graph rendering, and has a stable ecosystem.
 
@@ -29,7 +29,7 @@ Cons: Limited customization flexibility, making it less suitable for complex bra
 
 Decision: ❌ Not chosen.
 
-2.3 Mermaid
+### 2.3 Mermaid
 
 Pros: Markdown-friendly and simple to use for static documentation diagrams.
 
@@ -39,15 +39,15 @@ Decision: ❌ Not chosen.
 
 ## 3. Data Flow
 
-3.1 Graph Generation
+### 3.1 Graph Generation
 
 -> graph_builder.py extracts LangGraph trace data and generates a JSON graph structure.
 
-3.2 Data Loading
+### 3.2 Data Loading
 
 -> graph.html loads the JSON via WebSocket (live updates) or AJAX (batch load).
 
-3.3 Visualization & Interactivity
+### 3.3 Visualization & Interactivity
 
 -> D3.js renders nodes and edges.
 
