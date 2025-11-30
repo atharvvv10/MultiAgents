@@ -4,7 +4,6 @@ about: Suggest a new feature or improvement for MultiAgents AI Agents
 title: "[FEATURE] "
 labels: enhancement
 assignees: ''
-
 ---
 
 **Describe the feature**
@@ -15,3 +14,16 @@ Why is this feature useful in the MultiAgents context?
 
 **Additional context**
 Any other context, examples, or screenshots.
+
+---
+
+**Level:**
+- [ ] beginner
+- [ ] intermediate
+- [ ] advanced
+
+**First-time contributor**
+- [ ] This is my first issue on this repository
+
+**Proposed implementation (optional)**
+Describe the approach you think could work.
