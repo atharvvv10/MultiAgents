@@ -31,7 +31,7 @@ Then open 👉 http://localhost:5000
  in your browser.
 ```
 
-# 3. View the Agent Network Graph
+## 3. View the Agent Network Graph
 ```bash
 Visit 👉 http://localhost:5000/static/graph.html
 ```
