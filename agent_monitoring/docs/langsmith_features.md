@@ -44,7 +44,7 @@ For MultiProdigy: Enables inspection of agent messages and responses.
 
 Implementation: Store message content with configurable privacy controls.
 
-## 2. Priority Implementation Order
+# 2. Priority Implementation Order
 
 High Priority:
 
@@ -64,14 +64,14 @@ Low Priority:
 
 ->Cost tracking
 
-## 3. Technical Architecture
+# 3. Technical Architecture
 
 Event Flow:
 ```bash
 Agent Events → Tracer → JSON Logs → Web Dashboard → LangSmith-like UI
 ```
 
-## 4. Sample Data Structure
+# 4. Sample Data Structure
 ```bash
 {
   "trace_id": "abc123",
