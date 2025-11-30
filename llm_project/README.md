@@ -72,12 +72,13 @@ Copy code
 ollama pull tinyllama
 ```
 ## ▶️ Running the Demo
+```bash
 -Copy code
 -PYTHONPATH=. python demo/run_demo.py
 -Observe responses from all agents (simulated, offline, or real).
 
 Easily switch between agents or add new ones in src/agent_clients.py.
-
+```
 
 ## 📝 Agent Capabilities Overview
 
