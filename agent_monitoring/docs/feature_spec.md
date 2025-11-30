@@ -4,7 +4,7 @@
 This document consolidates the research and implementation plan for comprehensive agent monitoring, logging, and visualization in the MultiProdigy framework. It defines core features, architecture, data flow, implementation plan, technical specifications, and success criteria.
 
 ## 1. Core Features
-1.1 Structured Logging & Tracing
+### 1.1 Structured Logging & Tracing
 
 Purpose: Capture detailed agent interactions and performance metrics.
 Implementation: JSON-based logging with trace correlation.
@@ -17,7 +17,7 @@ Components:
 
 ->Structured log format with trace_id correlation
 
-1.2 LangSmith-inspired Dashboard
+### 1.2 LangSmith-inspired Dashboard
 
 Purpose: Provide timeline and trace visualization similar to LangSmith.
 Implementation: Flask-based web dashboard
@@ -30,7 +30,7 @@ Features:
 
 ->Trace inspection and debugging tools
 
-1.3 LangGraph-style Network Visualization
+### 1.3 LangGraph-style Network Visualization
 
 Purpose: Interactive graph showing agent communication patterns.
 Implementation: D3.js-based network graph
@@ -66,8 +66,9 @@ Phase 2: Visualization	113-118	Build LangSmith-style dashboard, implement D3.js 
 Phase 3: Integration & Testing	119-120	End-to-end integration testing, performance optimization, user documentation, demo preparation
 
 ## 5. Technical Specifications
+
+### 5.1 Log Format
 ```bash
-5.1 Log Format
 {
   "trace_id": "uuid",
   "timestamp": "ISO8601",
@@ -78,14 +79,14 @@ Phase 3: Integration & Testing	119-120	End-to-end integration testing, performan
   "status": "enum"
 }
 ```
-5.2 API Endpoints
+### 5.2 API Endpoints
 Endpoint	Description
 GET /api/traces	-> List all traces
 GET /api/timeline	-> Timeline view data
 GET /api/graph ->	Graph visualization data
 GET /api/metrics ->	Performance metrics
 
-5.3 Graph Data Structure
+### 5.3 Graph Data Structure
 ```bash
 {
   "nodes": [{"id", "type", "status", "metrics"}],
@@ -93,7 +94,7 @@ GET /api/metrics ->	Performance metrics
 }
 ```
 ## 6. Success Criteria
-6.1 Functional Requirements
+### 6.1 Functional Requirements
 
 -> All agent interactions are logged with trace correlation
 
@@ -103,7 +104,7 @@ GET /api/metrics ->	Performance metrics
 
 -> Error tracking and debugging capabilities work end-to-end
 
-6.2 Performance Requirements
+### 6.2 Performance Requirements
 
 -> Logging overhead < 5% of agent processing time
 
@@ -111,7 +112,7 @@ GET /api/metrics ->	Performance metrics
 
 -> Graph handles up to 50 agents and 1000 messages
 
-6.3 Usability Requirements
+### 6.3 Usability Requirements
 
 -> Clear documentation for enabling observability
 
