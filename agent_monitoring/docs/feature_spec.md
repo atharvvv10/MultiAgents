@@ -44,7 +44,7 @@ Features:
 ->Status indicators and performance overlays
 
 ## 2. Architecture & Data Flow
-Architecture Diagram (Logical)
+Architecture Diagram (Logical):
 ```bash
 Agent Events → AgentTracer → JSON Logs → Dashboard APIs → Web UI → Graph Builder → Graph UI
 ```
