@@ -26,7 +26,7 @@ Describe why this helps the project.
 - [ ] This is my first issue on this repository
 
 **Proposed approach**
-Describe your implementation plan (optional but helpful).
+Describe your implementation plan.
 
 **Additional context**
 Add any extra information moderators/maintainers should know.
