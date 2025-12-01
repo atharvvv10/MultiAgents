@@ -66,19 +66,19 @@ For the prototype phase, the recommended approach is:
 
 ## 3. Implementation Plan
 
-### 3.1. Structured Logging - 
+### 3.1. Structured Logging 
 
 -> Add structured JSON logging to BaseAgent and MessageBus.
 
 -> Include trace_id, event_type, timestamps, and metadata.
 
-### 3.2. Metrics Exporter - 
+### 3.2. Metrics Exporter 
 
 -> Develop a Prometheus metrics exporter.
 
 -> Track key indicators: processing latency, throughput, errors, CPU/memory usage.
 
-### 3.3. Log Viewer (Prototype Tool) - 
+### 3.3. Log Viewer (Prototype Tool) 
 
 -> Create a simple log viewer for developers.
 
