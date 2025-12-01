@@ -140,7 +140,7 @@ Choose:
 
 Select:
 - Your level  
-- First-time contributor (optional)
+- First-time contributor
 
 ### 2️⃣ Open a Pull Request  
 - Fork the repo  
