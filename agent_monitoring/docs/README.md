@@ -41,22 +41,22 @@ docs/
 
 This docs folder acts as a comprehensive reference for developers, researchers, and operators working with the agent monitoring system. It ensures that:
 
-- The system’s internal design and workflows are transparent and understandable.  
-- Users can successfully install, configure, and operate monitoring components.  
-- Advanced alerting and anomaly detection capabilities are explained and extensible.  
-- Monitoring data’s collection, storage, and visualization methods are documented.  
-- Troubleshooting guides help resolve issues efficiently.
+- The system’s functional specifications and architectural diagrams are transparent. 
+- Users can successfully navigate the application via the user guide.  
+- Complex integrations like LangSmith and Graph Visualizations are clearly documented.  
+- Research decisions regarding logging infrastructure are recorded for future reference. 
+- The project remains maintainable and easy to extend by new contributors.
 
 ---
 
 ## ⚙️ How to Use This Documentation
 
 1. Start with `README.md` for an overview.  
-2. Read `architecture.md` to understand the big picture and components.  
-3. Follow the setup and usage steps in `monitoring_guide.md`.  
-4. Use `visualization_tutorial.md` to learn how to create meaningful visual reports.  
-5. Dive into `alerting_research.md` and `data_tracing.md` for in-depth technical details.  
-6. Consult `troubleshooting.md` if you face issues during deployment or operation.
+2. Read feature_spec.md to understand the system architecture and specifications.  
+3. Follow the instructions in user_guide.md to install and operate the software. 
+4. Consult langsmith_features.md to understand specific LLM tracing capabilities. 
+5. Review graph_visualization.md to comprehend the logic behind data rendering.  
+6. Dive into logging_research.md to understand the rationale behind the logging implementation.
 
 ---
 
@@ -64,8 +64,8 @@ This docs folder acts as a comprehensive reference for developers, researchers, 
 
 - Ensures modular knowledge sharing within the project  
 - Helps onboard new developers and contributors smoothly  
-- Provides best practices and research-backed methods for monitoring  
-- Fosters maintainability and extensibility of the agent monitoring infrastructure
+- Provides context on technical decisions through research documentation  
+- Fosters maintainability of the core features and logging systems
 
 ---
 
