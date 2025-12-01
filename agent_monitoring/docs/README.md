@@ -7,13 +7,12 @@ Welcome to the documentation folder of the **Agent Monitoring** module in the Mu
 ## 📁 Documentation Structure
 ```bash
 docs/
-├── README.md # This documentation overview file
-├── architecture.md # High-level system & module architecture
-├── monitoring_guide.md # How to setup and use monitoring tools
-├── alerting_research.md # Research notes on alerting and anomaly detection
-├── data_tracing.md # Explanation of trace data collection and formats
-├── visualization_tutorial.md# Guide on using visualization utilities
-└── troubleshooting.md # Common issues and debugging tips
+├── README.md               # Project overview and instructions
+├── feature_spec.md         # Feature specifications and architecture diagrams
+├── graph_visualization.md  # Documentation on graph visualization logic
+├── langsmith_features.md   # Details on LangSmith feature integration
+├── logging_research.md     # Research notes regarding logging implementation
+└── user_guide.md           # Instructions and guides for the end-user
 ```
 
 ## Description of Docs
