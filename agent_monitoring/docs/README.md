@@ -18,25 +18,22 @@ docs/
 ## Description of Docs
 
 - **README.md**  
-  Provides an overview and introduction to the documentation content, explaining the purpose and scope of the monitoring docs.
+  Provides the central overview of the documentation repository, outlining the folder structure, purpose of the project, and instructions on how to navigate the available resources.
 
-- **architecture.md**  
-  Explains the internal architecture of the monitoring module: how agents are observed, how data flows through the system, components responsible for logging, alerting, and replay.
+- **feature_spec.md**  
+  Details the functional and technical specifications of the system, including high-level architecture diagrams, component breakdown, and defined requirements for feature implementation.
 
-- **monitoring_guide.md**  
-  Step-by-step instructions to configure monitoring, start/stop it, manage logs, configure alerts, and integrate with the backend.
+- **graph_visualization.md**  
+  Explains the logic and methodology behind the graph visualization components, covering how data relationships are mapped, rendered, and interpreted visually.
 
-- **alerting_research.md**  
-  Deep dive into the algorithms and strategies used to detect anomalies and trigger alerts, including thresholding and statistical models.
+- **langsmith_features.md**  
+  Documents the specific integrations with LangSmith, outlining supported features, configuration steps, and how the system leverages LangSmith for LLM tracing and evaluation.
 
-- **data_tracing.md**  
-  Technical document describing what data is collected from agents, data schemas, formats for trace logs, and how trace data supports replay and analysis.
+- **logging_research.md**  
+  Summarizes the research, comparisons, and strategic decisions made regarding the logging infrastructure, including selected tools, formats, and best practices.
 
-- **visualization_tutorial.md**  
-  Hands-on tutorial for using the visualizer tools included in the module to generate graphs, heatmaps, timelines, and other visual insights from monitoring data.
-
-- **troubleshooting.md**  
-  Common problems encountered while deploying or running agent monitoring, with solutions and debugging steps.
+- **user_guide.md**  
+  A comprehensive manual for end-users containing step-by-step instructions on installation, configuration, basic usage, and how to effectively operate the software.
 
 ---
 
