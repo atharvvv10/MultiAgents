@@ -33,7 +33,7 @@ llm_project/
 │   ├── base.py                # Base provider interface
 │   ├── openai_provider.py     # Simulated OpenAI client
 │   ├── gemini_provider.py     # Simulated Gemini client
-│   ├── huggingface_provider.py# Local offline HF model
+│   ├── huggingface_provider.py # Local offline HF model
 │   ├── ollama_provider.py     # Real local Ollama inference
 │
 ├── utils/
