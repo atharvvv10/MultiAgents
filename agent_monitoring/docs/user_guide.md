@@ -90,8 +90,8 @@ Visit 👉 http://localhost:5000/static/graph.html
 -> ⚫ Idle
 
 ## ⚙️ Configuration Options
-Custom Log File
 ```bash
+Custom Log File
 from MultiProdigy.observability.tracer import AgentTracer
 tracer = AgentTracer(log_file="my_custom_traces.jsonl")
 
